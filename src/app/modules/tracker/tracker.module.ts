@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NavbarComponent} from "../../components/navbar/navbar.component";
 import {SummaryComponent} from "../../components/summary/summary.component";
 import {HomeComponent} from "../../components/home/home.component";
 import {CovidApiService} from "../../services/covid-api.service";
@@ -11,7 +10,6 @@ import {CovidApiService} from "../../services/covid-api.service";
   ],
 
   declarations: [
-    NavbarComponent,
     SummaryComponent,
     HomeComponent
   ],
@@ -19,7 +17,6 @@ import {CovidApiService} from "../../services/covid-api.service";
     CommonModule
   ],
   exports:[
-    NavbarComponent,
     SummaryComponent,
     HomeComponent
   ]
