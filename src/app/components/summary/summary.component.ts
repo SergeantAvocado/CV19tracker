@@ -11,7 +11,7 @@ export class SummaryComponent implements OnInit {
 
   //attributes
   currentDate:string='';
-  listOfCountries:CountryModel[];
+  listOfCountries:any[];
   listOfCases:any[];
 
   //total attributes
@@ -28,6 +28,7 @@ export class SummaryComponent implements OnInit {
   ngOnInit(): void 
   {
     this.currentDate=this.GetSystemDate();
+    this.listOfCountries = [];
     this.GetCountryList();
   }
 
@@ -46,7 +47,16 @@ export class SummaryComponent implements OnInit {
   {
     this.covidService.GetAvailableCountries().subscribe(res=>
       {
-        this.listOfCountries = res as CountryModel[];
+        
+        this.listOfCountries = res as any[];
+        this.listOfCountries.sort((a,b)=>
+        {
+          if(a.Country.toLowerCase() > b.Country.toLowerCase())
+            return 1;
+          if(a.Country.toLowerCase() < b.Country.toLowerCase())
+            return -1;
+          return 0;
+        });
       });
   }
 
@@ -60,7 +70,7 @@ export class SummaryComponent implements OnInit {
           this.GetActualReportData();  
         } catch (error)
         {
-          alert(`Sorry! no data provided for ${slug}`);
+          alert(`Sorry, no data provided for ${slug}`);
         }
         
       });
