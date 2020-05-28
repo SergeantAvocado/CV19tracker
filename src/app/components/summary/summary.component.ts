@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CovidApiService } from 'src/app/services/covid-api.service';
 import { CountryModel } from 'src/app/models/country';
+import { fade, slide } from '../../animations/MainAnimations';
 
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.css']
+  styleUrls: ['./summary.component.css'],
+  animations:[fade,slide]
 })
 export class SummaryComponent implements OnInit {
 
@@ -67,6 +69,7 @@ export class SummaryComponent implements OnInit {
         try 
         {
           this.listOfCases= res as any[];
+          this.ConvertDateFormat(this.listOfCases);
           this.GetActualReportData();  
         } catch (error)
         {
@@ -108,6 +111,40 @@ export class SummaryComponent implements OnInit {
     this.t_active = actualCase.Active;
 
     this.t_new=actualCase.Confirmed-previousCase.Confirmed;
+  }
+
+  private ConvertDateFormat(arr:any[])
+  {
+    for (let i = 0; i < arr.length; i++) {
+      arr[i].Date = this.ISO8601FormatParser(arr[i].Date);
+      
+    }
+  }
+
+  private ISO8601FormatParser(isoDate:string):string
+  {
+    let date = new Date(isoDate);
+    let year = date.getFullYear();
+    let month = date.getMonth()+1;
+    let dt = date.getDate();
+    let day:string;
+    let montStr:string;
+
+    if (dt < 10)
+    {
+      day = '0' + dt;
+    }
+    else
+      day = `${dt}`;
+
+    if (month < 10)
+    {
+      montStr = '0' + month;
+    }
+    else  
+      montStr=`${month}`;
+
+    return (`${montStr}/${day}/${year}`);
   }
 
 }

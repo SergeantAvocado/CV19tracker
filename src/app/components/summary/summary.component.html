@@ -1,31 +1,31 @@
-<h3 class="h2 text-center">Pandemic data
+<h3 class="h2 text-center" @fade>Pandemic data
     <span class="badge badge-danger">LIVE - {{currentDate}}</span>
 </h3>
 <hr>
-<div class="container">
+<div class="container" @slide>
     <select class="custom-select" (change)="GetCountrySlug($event)">
         <option Value="">select country</option>
         <option *ngFor="let country of listOfCountries" value="{{country.Slug}}">{{country.Country}}</option>
       </select>
 </div>
 <hr>
-<h3 class="h2 text-center">Total cases</h3>
-<div class="container">
+<h3 @fade class="h2 text-center">Total cases</h3>
+<div class="container" >
     <hr>
-    <h5 class="h4 text-center">Confirmed: {{t_confirmed}}  <span class="badge badge-danger">+{{t_new}} New</span></h5>
-    <hr>
-    <hr>
-    <h5 class="h4 text-center">Deaths: {{t_deaths}}</h5>
+    <h5 class="h4 text-center" @slide>Confirmed: {{t_confirmed}}  <span class="badge badge-danger">+{{t_new}} New</span></h5>
     <hr>
     <hr>
-    <h5 class="h4 text-center">Recovered: {{t_recovered}}</h5>
+    <h5 class="h4 text-center" @slide>Deaths: {{t_deaths}}</h5>
     <hr>
     <hr>
-    <h5 class="h4 text-center">Active: {{t_active}}</h5>
+    <h5 class="h4 text-center" @slide>Recovered: {{t_recovered}}</h5>
+    <hr>
+    <hr>
+    <h5 class="h4 text-center" @slide>Active: {{t_active}}</h5>
     <hr>
 </div>
 <hr>
-<h3 class="h2 text-center">Daily reports:</h3>
+<h3 @fade class="h2 text-center">Daily reports:</h3>
 <hr>
 <div class="container text-center table-responsive">
     <table class="table table-striped">
@@ -39,7 +39,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor = "let case of listOfCases">
+          <tr *ngFor = "let case of listOfCases" @slide>
             <th scope="row">{{case.Date}}</th>
             <td>{{case.Confirmed}}</td>
             <td>{{case.Deaths}}</td>
