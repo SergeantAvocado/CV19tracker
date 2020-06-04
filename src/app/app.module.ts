@@ -6,7 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {TrackerModule} from './modules/tracker/tracker.module';
-import {NavbarComponent} from './components/navbar/navbar.component'
+import {NavbarComponent} from './components/navbar/navbar.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import {NavbarComponent} from './components/navbar/navbar.component'
     BrowserAnimationsModule,
     AppRoutingModule,
     TrackerModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
