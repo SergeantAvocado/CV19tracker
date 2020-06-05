@@ -2,7 +2,7 @@
   "name": "COVID-19 Tracker",
   "short_name": "CV-19 Tracker",
   "theme_color": "#e32222",
-  "background_color": "#fafafa",
+  "background_color": "#e32222",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

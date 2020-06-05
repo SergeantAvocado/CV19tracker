@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1591312331657,
+  "timestamp": 1591316780084,
   "index": "https://SergeantAvocado.github.io/CV19Tracker/index.html",
   "assetGroups": [
     {
@@ -54,7 +54,7 @@
     "https://SergeantAvocado.github.io/CV19Tracker/index.html": "7e361ba35021ad6c6294191e2e3b15e5fbb617fa",
     "https://SergeantAvocado.github.io/CV19Tracker/main-es2015.086d1f38ae50140a2921.js": "aae39c6c07ce9d20a3acdf5e7ab1fbb1495a045f",
     "https://SergeantAvocado.github.io/CV19Tracker/main-es5.086d1f38ae50140a2921.js": "320a5427ce8668b539decf8d45053314de8cffdc",
-    "https://SergeantAvocado.github.io/CV19Tracker/manifest.webmanifest": "1fa64c0758af0631200c383f0b2eae045904ccac",
+    "https://SergeantAvocado.github.io/CV19Tracker/manifest.webmanifest": "d3b7078178716f71ecfde608f423160c0b899112",
     "https://SergeantAvocado.github.io/CV19Tracker/polyfills-es2015.690002c25ea8557bb4b0.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
     "https://SergeantAvocado.github.io/CV19Tracker/polyfills-es5.9e286f6d9247438cbb02.js": "89222a28dbabb780fc372d33834080e0cd3083d9",
     "https://SergeantAvocado.github.io/CV19Tracker/runtime-es2015.1eba213af0b233498d9d.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
