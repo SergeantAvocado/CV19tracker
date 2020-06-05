@@ -9,6 +9,7 @@ import {TrackerModule} from './modules/tracker/tracker.module';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment'
+import { UpdateappService} from './services/updateapp.service'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { environment } from '../environments/environment'
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [UpdateappService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
