@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1591321957528,
+  "timestamp": 1592859561181,
   "index": "https://SergeantAvocado.github.io/CV19Tracker/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "https://SergeantAvocado.github.io/CV19Tracker/favicon.ico",
         "https://SergeantAvocado.github.io/CV19Tracker/index.html",
-        "https://SergeantAvocado.github.io/CV19Tracker/main-es2015.16feed7245b5f739eff7.js",
-        "https://SergeantAvocado.github.io/CV19Tracker/main-es5.16feed7245b5f739eff7.js",
+        "https://SergeantAvocado.github.io/CV19Tracker/main-es2015.72dc4f2da60dbdc4767a.js",
+        "https://SergeantAvocado.github.io/CV19Tracker/main-es5.72dc4f2da60dbdc4767a.js",
         "https://SergeantAvocado.github.io/CV19Tracker/manifest.webmanifest",
         "https://SergeantAvocado.github.io/CV19Tracker/polyfills-es2015.690002c25ea8557bb4b0.js",
         "https://SergeantAvocado.github.io/CV19Tracker/polyfills-es5.9e286f6d9247438cbb02.js",
@@ -51,9 +51,9 @@
     "https://SergeantAvocado.github.io/CV19Tracker/assets/icons/ms-icon-310x310.png": "f1b611a29e5479a6c7c6f59558214f41f76ce6fd",
     "https://SergeantAvocado.github.io/CV19Tracker/assets/other_logo.png": "7fc325a29ad3f06799446cb39a43c0dc6b352fd8",
     "https://SergeantAvocado.github.io/CV19Tracker/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://SergeantAvocado.github.io/CV19Tracker/index.html": "a72c25f7c687b1127707d34e8243b77df6f6f6a4",
-    "https://SergeantAvocado.github.io/CV19Tracker/main-es2015.16feed7245b5f739eff7.js": "2200ba921c7d9fd1036b0c6eae37bd397b093230",
-    "https://SergeantAvocado.github.io/CV19Tracker/main-es5.16feed7245b5f739eff7.js": "d8b081d181af5aa9fbced000b21f60ebc311759c",
+    "https://SergeantAvocado.github.io/CV19Tracker/index.html": "d10ee6f4c3b1a582fd4200bc66f6a1bf56a8fc22",
+    "https://SergeantAvocado.github.io/CV19Tracker/main-es2015.72dc4f2da60dbdc4767a.js": "26f5e5a76b6e7c8a4a3d069baffabd2a2d842e62",
+    "https://SergeantAvocado.github.io/CV19Tracker/main-es5.72dc4f2da60dbdc4767a.js": "b5f403794307aa2838c4a85e5d84009f23210544",
     "https://SergeantAvocado.github.io/CV19Tracker/manifest.webmanifest": "0b55be0577f3bddc4152085c15aa833515177557",
     "https://SergeantAvocado.github.io/CV19Tracker/polyfills-es2015.690002c25ea8557bb4b0.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
     "https://SergeantAvocado.github.io/CV19Tracker/polyfills-es5.9e286f6d9247438cbb02.js": "89222a28dbabb780fc372d33834080e0cd3083d9",
