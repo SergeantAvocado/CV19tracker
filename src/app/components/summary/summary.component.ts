@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CovidApiService } from 'src/app/services/covid-api.service';
-import { CountryModel } from 'src/app/models/country';
 import { fade, slide } from '../../animations/MainAnimations';
+import { ChartDataSets, ChartOptions } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-summary',
@@ -23,6 +24,53 @@ export class SummaryComponent implements OnInit {
   t_recovered:number;
   t_new:number;
 
+  //chart data
+  monthsList = ['January','Febraury','March','April','May','June','July','August','September','October','November','December'];
+  monthsSet:Set<string>;
+  monthsArr:string[];
+  confirmedDataset:number[];
+  deathsDataset:number[];
+  recoveredDataset:number[];
+  activeDataset:number[];
+   
+
+  //chart configuration
+  public lineChartData: ChartDataSets[] = 
+  [
+    //y axis
+    { data: [1], label: 'Confirmed' },
+    { data: [5], label: 'Deaths' },
+    { data: [10], label: 'Recovered' },
+    { data: [15], label: 'Active' }
+  ];
+  public lineChartLabels: Label[] = ['January','February','March','April','May']; //x axis
+  public lineChartOptions: (ChartOptions) = 
+  {
+    responsive: true,
+  };
+  public lineChartColors: Color[] = 
+  [
+    { //confirmed
+      backgroundColor: 'rgba(204,0,0,0.3)',
+      borderColor: 'rgba(204,0,0,0.8)'
+    },
+    {//deaths
+      backgroundColor: 'rgba(17,17,17,0.3)',
+      borderColor: 'rgba(17,17,17,0.8)'
+    },
+    {//recovered
+      backgroundColor: 'rgba(51,102,255,0.3)',
+      borderColor: 'rgba(51,102,255,0.8)'
+    },
+    {//active
+      backgroundColor: 'rgba(255,255,0,0.3)',
+      borderColor: 'rgba(255,255,0,0.8)'
+    },
+  ];
+  public lineChartLegend = true;
+  public lineChartType = 'line';
+  public lineChartPlugins = [];
+
   //constructor
   constructor(private covidService:CovidApiService) { }
 
@@ -32,6 +80,8 @@ export class SummaryComponent implements OnInit {
     this.currentDate=this.GetSystemDate();
     this.listOfCountries = [];
     this.GetCountryList();
+    this.monthsSet = new Set();
+    this.monthsArr = [];
   }
 
   //methods
@@ -70,12 +120,12 @@ export class SummaryComponent implements OnInit {
         {
           this.listOfCases= res as any[];
           this.ConvertDateFormat(this.listOfCases);
-          this.GetActualReportData();  
+          this.GetActualReportData(); 
+          
         } catch (error)
         {
           alert(`Sorry, no data provided for ${slug}`);
         }
-        
       });
   }
 
@@ -85,6 +135,7 @@ export class SummaryComponent implements OnInit {
     let slug = event.target.value;
     this.GetReportedCasesOfCountry(slug);
     this.CleanDataHolders(); //clean previous info if any
+    this.lineChartLabels=this.monthsArr;
   }
 
   //operation methods
@@ -96,6 +147,12 @@ export class SummaryComponent implements OnInit {
     this.t_deaths=0;
     this.t_new = 0;
     this.t_recovered=0;
+    this.monthsSet= new Set();
+    this.monthsArr = [];
+    this.confirmedDataset=[];
+    this.deathsDataset=[];
+    this.recoveredDataset=[];
+    this.activeDataset=[];
   }
 
   GetActualReportData()
@@ -111,6 +168,7 @@ export class SummaryComponent implements OnInit {
     this.t_active = actualCase.Active;
 
     this.t_new=actualCase.Confirmed-previousCase.Confirmed;
+    this.GetDatasets();
   }
 
   private ConvertDateFormat(arr:any[])
@@ -126,6 +184,7 @@ export class SummaryComponent implements OnInit {
     let date = new Date(isoDate);
     let year = date.getFullYear();
     let month = date.getMonth()+1;
+    this.monthsSet.add(this.monthsList[month-1]);
     let dt = date.getDate();
     let day:string;
     let montStr:string;
@@ -144,7 +203,54 @@ export class SummaryComponent implements OnInit {
     else  
       montStr=`${month}`;
 
+    
+      
     return (`${montStr}/${day}/${year}`);
   }
 
+  UpdateLineChartLabels()
+  {
+    this.monthsArr = Array.from(this.monthsSet);
+    this.lineChartLabels=this.monthsArr;
+    this.lineChartData =
+    [
+      { data: this.confirmedDataset, label: 'Confirmed' },
+      { data: this.deathsDataset, label: 'Deaths' },
+      { data: this.recoveredDataset, label: 'Recovered' },
+      { data: this.activeDataset, label: 'Active' }
+    ];
+  }
+
+  GetDatasets()
+  {
+    for (let i = 0; i < this.listOfCases.length; i++)
+    {
+      if(this.listOfCases[i+1]!=null)
+      {
+        let date1 = new Date(this.listOfCases[i].Date);
+        let month1 = date1.getMonth();
+        
+        let date2 = new Date(this.listOfCases[i+1].Date);
+        let month2 = date2.getMonth();
+        if(month1<month2) //last day of month
+        {
+          //save datasets
+          this.confirmedDataset.push(this.listOfCases[i].Confirmed);
+          this.recoveredDataset.push(this.listOfCases[i].Recovered);
+          this.deathsDataset.push(this.listOfCases[i].Deaths);
+          this.activeDataset.push(this.listOfCases[i].Active);
+        }
+      }
+    }
+
+    let last_index = this.listOfCases.length-1;
+
+    //save data of the last reported case 
+    this.confirmedDataset.push(this.listOfCases[last_index].Confirmed);
+    this.recoveredDataset.push(this.listOfCases[last_index].Recovered);
+    this.deathsDataset.push(this.listOfCases[last_index].Deaths);
+    this.activeDataset.push(this.listOfCases[last_index].Active);
+    
+    this.UpdateLineChartLabels();
+  }
 }

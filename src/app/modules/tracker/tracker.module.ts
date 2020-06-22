@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {SummaryComponent} from "../../components/summary/summary.component";
 import {HomeComponent} from "../../components/home/home.component";
 import {CovidApiService} from "../../services/covid-api.service";
+import { ChartsModule } from "ng2-charts";
 
 @NgModule({
   providers:[
@@ -14,7 +15,8 @@ import {CovidApiService} from "../../services/covid-api.service";
     HomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ChartsModule
   ],
   exports:[
     SummaryComponent,

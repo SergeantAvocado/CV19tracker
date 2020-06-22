@@ -9,7 +9,7 @@
       </select>
 </div>
 <hr>
-<h3 @fade class="h2 text-center">Total cases</h3>
+<h3 @fade class="h2 text-center">Total cases:</h3>
 <div class="container" >
     <hr>
     <h5 class="h4 text-center" @slide>Confirmed: {{t_confirmed}}  <span class="badge badge-danger">+{{t_new}} New</span></h5>
@@ -24,6 +24,26 @@
     <h5 class="h4 text-center" @slide>Active: {{t_active}}</h5>
     <hr>
 </div>
+<hr>
+<h3 @fade class="h2 text-center">Graph:</h3>
+<hr>
+<div class="container">
+  <!--chart-->
+  <div class="container text-center">
+    <h5 class="h5"><span class="badge badge-danger">Hide categories to get a closer look at the data</span></h5>
+  </div>
+  <hr>
+  <canvas baseChart @fade
+  [datasets]="lineChartData"
+  [labels]="lineChartLabels"
+  [options]="lineChartOptions"
+  [colors]="lineChartColors"
+  [legend]="lineChartLegend"
+  [chartType]="lineChartType"
+  [plugins]="lineChartPlugins"
+  ></canvas>
+</div>
+<hr>
 <hr>
 <h3 @fade class="h2 text-center">Daily reports:</h3>
 <hr>
