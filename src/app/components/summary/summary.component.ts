@@ -147,6 +147,11 @@ export class SummaryComponent implements OnInit {
     this.t_deaths=0;
     this.t_new = 0;
     this.t_recovered=0;
+    this.CleanChartData();
+  }
+
+  CleanChartData()
+  {
     this.monthsSet= new Set();
     this.monthsArr = [];
     this.confirmedDataset=[];
@@ -253,4 +258,18 @@ export class SummaryComponent implements OnInit {
     
     this.UpdateLineChartLabels();
   }
+
+  GetDatasetsForMonth(event:any)
+  {
+    let month = event.target.value;
+    if(month == 'all')
+      {
+        console.log('updated to default');
+      }
+    else
+    {
+      console.log('update Datasets by month');
+    }
+  }
+  
 }
