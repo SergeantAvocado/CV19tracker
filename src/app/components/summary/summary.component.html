@@ -1,3 +1,4 @@
+<hr>
 <h3 class="h2 text-center" @fade>Pandemic data
     <span class="badge badge-danger badge-pill">LIVE-{{currentDate}}</span>
 </h3>
@@ -36,26 +37,38 @@
 
 <h3 @fade class="h2 text-center">Graph:</h3>
 
+<hr>
 <div class="container">
-  <!--chart-->
-  <div class="container text-center" @fade>
-    <h5 class="h5"><span class="badge badge-danger badge-pill">Hide categories to get a closer look at the data</span></h5>
-  </div>
-  
+
   <div class="container" @slide>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <button class="btn btn-outline-danger btn-md" disabled >display for:</button>
       </div>
-      <select class="custom-select" id="month_selector" (change)="GetDatasetsForMonth($event)">
-        <option Value="all">every month</option>
+      <select class="custom-select" id="month_selector" (change)="ChangeChartDisplay($event)">
+        <option Value="">Every month</option>
         <option *ngFor="let month of monthsArr" value="{{month}}">{{month}}</option>
       </select>
     </div>
   </div>
-  
 
   <hr>
+
+  <div class="conatiner text-center">
+    <p>
+      <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseInfo" aria-expanded="false" aria-controls="collapseExample">
+        Info
+      </button>
+    </p>
+    <div class="collapse" id="collapseInfo">
+      <div class="card card-body">
+        Hide categories to get a closer look at different rates.
+      </div>
+    </div>
+  </div>
+  
+  <hr>
+  <!--chart-->
   <canvas baseChart @fade
   [datasets]="lineChartData"
   [labels]="lineChartLabels"
