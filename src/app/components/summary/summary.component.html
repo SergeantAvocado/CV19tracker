@@ -1,7 +1,7 @@
-<hr>
-<h3 class="h2 text-center" @fade>Pandemic data
-    <span class="badge badge-danger badge-pill">LIVE-{{currentDate}}</span>
-</h3>
+<header class="bg-danger text-center py-5 mb-4">
+  <h3 class="h2 text-white font-weight-light" @fade>Pandemic data</h3>
+  <h1 class="h1 text-white font-weight-bold" @fade>LIVE {{currentDate}}</h1>
+</header>
 <hr>
 <div class="container" @slide>
   <div class="input-group mb-3">
@@ -20,16 +20,16 @@
 
   <ul class="list-group">
     <li class="list-group-item">
-      <h5 class="h4 text-center" @slide>Confirmed: {{t_confirmed}}  <span class="badge badge-danger badge-pill">+{{t_new}} New</span></h5>
+      <h5 class="h4 text-center" @fade>Confirmed: {{t_confirmed}}  <span class="badge badge-danger badge-pill">+{{t_new}} New</span></h5>
     </li>
     <li class="list-group-item">
-      <h5 class="h4 text-center" @slide>Deaths: {{t_deaths}}</h5>
+      <h5 class="h4 text-center" @fade>Deaths: {{t_deaths}}</h5>
     </li>
     <li class="list-group-item">
-      <h5 class="h4 text-center" @slide>Recovered: {{t_recovered}}</h5>
+      <h5 class="h4 text-center" @fade>Recovered: {{t_recovered}}</h5>
     </li>
     <li class="list-group-item">
-      <h5 class="h4 text-center" @slide>Active: {{t_active}}</h5>
+      <h5 class="h4 text-center" @fade>Active: {{t_active}}</h5>
     </li>
   </ul>
 </div>
@@ -54,15 +54,23 @@
 
   <hr>
 
-  <div class="conatiner text-center">
+  <div class="conatiner">
     <p>
-      <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseInfo" aria-expanded="false" aria-controls="collapseExample">
-        Info
+      <button class="btn btn-block btn-outline-danger" type="button" data-toggle="collapse" data-target="#collapseInfo" aria-expanded="false" aria-controls="collapseExample">
+        Information
       </button>
     </p>
     <div class="collapse" id="collapseInfo">
       <div class="card card-body">
-        Hide categories to get a closer look at different rates.
+        The following information can be hidden to have a better look at other rates:
+        <div class="container">
+          <ul>
+            <li>Confirmed</li>
+            <li>Recovers</li>
+            <li>Active</li>
+            <li>Deaths</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
