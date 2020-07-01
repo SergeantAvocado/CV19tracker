@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1592859561181,
+  "timestamp": 1593585486347,
   "index": "https://SergeantAvocado.github.io/CV19Tracker/index.html",
   "assetGroups": [
     {
@@ -8,7 +8,6 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "https://SergeantAvocado.github.io/CV19Tracker/favicon.ico",
         "https://SergeantAvocado.github.io/CV19Tracker/index.html",
         "https://SergeantAvocado.github.io/CV19Tracker/main-es2015.72dc4f2da60dbdc4767a.js",
         "https://SergeantAvocado.github.io/CV19Tracker/main-es5.72dc4f2da60dbdc4767a.js",
@@ -17,7 +16,7 @@
         "https://SergeantAvocado.github.io/CV19Tracker/polyfills-es5.9e286f6d9247438cbb02.js",
         "https://SergeantAvocado.github.io/CV19Tracker/runtime-es2015.1eba213af0b233498d9d.js",
         "https://SergeantAvocado.github.io/CV19Tracker/runtime-es5.1eba213af0b233498d9d.js",
-        "https://SergeantAvocado.github.io/CV19Tracker/styles.3ff695c00d717f2d2a11.css"
+        "https://SergeantAvocado.github.io/CV19Tracker/styles.280e991c5992f8630bc9.css"
       ],
       "patterns": []
     },
@@ -34,7 +33,8 @@
         "https://SergeantAvocado.github.io/CV19Tracker/assets/icons/apple-icon-114x114.png",
         "https://SergeantAvocado.github.io/CV19Tracker/assets/icons/apple-icon-152x152.png",
         "https://SergeantAvocado.github.io/CV19Tracker/assets/icons/ms-icon-310x310.png",
-        "https://SergeantAvocado.github.io/CV19Tracker/assets/other_logo.png"
+        "https://SergeantAvocado.github.io/CV19Tracker/assets/other_logo.png",
+        "https://SergeantAvocado.github.io/CV19Tracker/favicon.png"
       ],
       "patterns": []
     }
@@ -50,16 +50,16 @@
     "https://SergeantAvocado.github.io/CV19Tracker/assets/icons/apple-icon-152x152.png": "0a63f89b102e07b1d05555f183f6e11d3f538c99",
     "https://SergeantAvocado.github.io/CV19Tracker/assets/icons/ms-icon-310x310.png": "f1b611a29e5479a6c7c6f59558214f41f76ce6fd",
     "https://SergeantAvocado.github.io/CV19Tracker/assets/other_logo.png": "7fc325a29ad3f06799446cb39a43c0dc6b352fd8",
-    "https://SergeantAvocado.github.io/CV19Tracker/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://SergeantAvocado.github.io/CV19Tracker/index.html": "d10ee6f4c3b1a582fd4200bc66f6a1bf56a8fc22",
+    "https://SergeantAvocado.github.io/CV19Tracker/favicon.png": "34403f4d1fdffe23a4060905389fbb350fdb461d",
+    "https://SergeantAvocado.github.io/CV19Tracker/index.html": "922b99baf9b6cfb8b262b9a5c7d09e2dc108673e",
     "https://SergeantAvocado.github.io/CV19Tracker/main-es2015.72dc4f2da60dbdc4767a.js": "26f5e5a76b6e7c8a4a3d069baffabd2a2d842e62",
     "https://SergeantAvocado.github.io/CV19Tracker/main-es5.72dc4f2da60dbdc4767a.js": "b5f403794307aa2838c4a85e5d84009f23210544",
-    "https://SergeantAvocado.github.io/CV19Tracker/manifest.webmanifest": "0b55be0577f3bddc4152085c15aa833515177557",
+    "https://SergeantAvocado.github.io/CV19Tracker/manifest.webmanifest": "8ca0e544f38f824d80b570ffa8ebd0b1b5f9454c",
     "https://SergeantAvocado.github.io/CV19Tracker/polyfills-es2015.690002c25ea8557bb4b0.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
     "https://SergeantAvocado.github.io/CV19Tracker/polyfills-es5.9e286f6d9247438cbb02.js": "89222a28dbabb780fc372d33834080e0cd3083d9",
     "https://SergeantAvocado.github.io/CV19Tracker/runtime-es2015.1eba213af0b233498d9d.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "https://SergeantAvocado.github.io/CV19Tracker/runtime-es5.1eba213af0b233498d9d.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "https://SergeantAvocado.github.io/CV19Tracker/styles.3ff695c00d717f2d2a11.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    "https://SergeantAvocado.github.io/CV19Tracker/styles.280e991c5992f8630bc9.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
   },
   "navigationUrls": [
     {
