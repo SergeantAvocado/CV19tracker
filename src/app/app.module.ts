@@ -10,12 +10,12 @@ import { ChartsModule } from "ng2-charts";
 import {NavbarComponent} from './components/navbar/navbar.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment'
-import { UpdateappService} from './services/updateapp.service'
+import { UpdateappService} from './services/updateapp.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

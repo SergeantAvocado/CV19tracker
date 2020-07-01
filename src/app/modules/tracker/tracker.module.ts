@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {SummaryComponent} from "../../components/summary/summary.component";
 import {HomeComponent} from "../../components/home/home.component";
+import { ContactComponent } from '../../components/contact/contact.component';
 import {CovidApiService} from "../../services/covid-api.service";
 import { ChartsModule } from "ng2-charts";
 
@@ -12,15 +13,17 @@ import { ChartsModule } from "ng2-charts";
 
   declarations: [
     SummaryComponent,
-    HomeComponent
+    HomeComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
-    ChartsModule
+    ChartsModule,
   ],
   exports:[
     SummaryComponent,
-    HomeComponent
+    HomeComponent,
+    ContactComponent
   ]
 })
 export class TrackerModule { }
