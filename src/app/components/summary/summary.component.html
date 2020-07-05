@@ -43,47 +43,49 @@
 <p></p>
 <p></p>
 <div class="container">
-
-  <div class="container" @slide>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <button class="btn btn-outline-danger btn-md" disabled >display for:</button>
-      </div>
-      <select class="custom-select" id="month_selector" (change)="ChangeChartDisplay($event)">
-        <option Value="">Every month</option>
-        <option *ngFor="let month of monthsArr" value="{{month}}">{{month}}</option>
-      </select>
-    </div>
-  </div>
-
-  
-
   <div class="conatiner">
     <p>
-      <button class="btn btn-block btn-outline-danger" type="button" data-toggle="collapse" data-target="#collapseInfo" aria-expanded="false" aria-controls="collapseExample">
-        Advice
+      <button class="btn btn-block btn-outline-danger" type="button" data-toggle="collapse" data-target="#collapseInfo" aria-expanded="false" aria-controls="collapseExample" @slide>
+        Display
       </button>
     </p>
     <p></p>
     <p></p>
     <div class="collapse" id="collapseInfo">
-      <div class="card card-body">
-        Information can be hidden to have a better look at other rates.
+      <div class='card text-center'>
+        <div class='card-header text-white bg-danger mb3'>
+          Advice
+        </div>
+        <div class="card-body">
+          Information can be hidden to have a better look at other rates.
+        </div>
       </div>
+      <p></p>
+      <p></p>
+      
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-danger btn-md" disabled >display for:</button>
+          </div>
+          <select class="custom-select" id="month_selector" (change)="ChangeChartDisplay($event)">
+            <option Value="">Every month</option>
+            <option *ngFor="let month of monthsArr" value="{{month}}">{{month}}</option>
+          </select>
+        </div>
+      
+      <hr>
+      <!--chart-->
+      <canvas baseChart @fade
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"
+      [plugins]="lineChartPlugins"
+      ></canvas>
     </div>
   </div>
-  
-  <hr>
-  <!--chart-->
-  <canvas baseChart @fade
-  [datasets]="lineChartData"
-  [labels]="lineChartLabels"
-  [options]="lineChartOptions"
-  [colors]="lineChartColors"
-  [legend]="lineChartLegend"
-  [chartType]="lineChartType"
-  [plugins]="lineChartPlugins"
-  ></canvas>
 </div>
 <hr>
 <h3 @fade class="h2 text-center">Daily reports:</h3>
