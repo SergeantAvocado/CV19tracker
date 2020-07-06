@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {fade} from './animations/MainAnimations'
+import {fade} from './animations/MainAnimations';
+import {UpdateappService} from './services/updateapp.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,6 @@ import {fade} from './animations/MainAnimations'
 export class AppComponent
 {
   title = 'cv19tracker';
-  constructor()
+  constructor(private update:UpdateappService)
   {}
 }
