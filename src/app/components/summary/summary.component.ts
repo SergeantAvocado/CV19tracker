@@ -3,7 +3,7 @@ import { CovidApiService } from 'src/app/services/covid-api.service';
 import { fade, slide } from '../../animations/MainAnimations';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
-import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
+import {LocationService} from '../../services/location.service';
 
 @Component({
   selector: 'app-summary',
@@ -17,6 +17,7 @@ export class SummaryComponent implements OnInit {
   currentDate:string='';
   listOfCountries:any[];
   listOfCases:any[];
+  visitorsCountrySlug:string;
 
   //total attributes
   t_deaths:number;
@@ -78,11 +79,12 @@ export class SummaryComponent implements OnInit {
   public lineChartPlugins = [];
 
   //constructor
-  constructor(private covidService:CovidApiService) { }
+  constructor(private covidService:CovidApiService, public locationService:LocationService){}
 
   //on initialization
   ngOnInit(): void 
   {
+    this.CleanDataHolders();
     this.currentDate=this.GetSystemDate();
     this.listOfCountries = [];
     this.GetCountryList();
@@ -102,6 +104,23 @@ export class SummaryComponent implements OnInit {
 
   }
 
+  //get visitor's country cases and information
+  GetVisitorsCountryInfo()
+  {
+    for (let i = 0; i < this.listOfCountries.length; i++) 
+    {
+      if (this.listOfCountries[i].ISO2 == this.locationService.userCountryCode)
+      {
+        this.visitorsCountrySlug = this.listOfCountries[i].Slug;
+        this.GetReportedCasesOfCountry(this.visitorsCountrySlug);
+        this.lineChartLabels=this.monthsArr;
+        break;
+      }
+    }
+  }
+
+
+  //get list of countries
   GetCountryList()
   {
     this.covidService.GetAvailableCountries().subscribe(res=>
@@ -116,6 +135,7 @@ export class SummaryComponent implements OnInit {
             return -1;
           return 0;
         });
+        this.GetVisitorsCountryInfo();
       });
   }
 
@@ -138,10 +158,11 @@ export class SummaryComponent implements OnInit {
   GetCountrySlug(event:any)
   {
     //event.target.value returns country slug
-    let slug = event.target.value;
-    this.GetReportedCasesOfCountry(slug);
+    let recieved_slug = event.target.value;
+    this.GetReportedCasesOfCountry(recieved_slug);
     this.CleanDataHolders(); //clean previous info if any
-    this.lineChartLabels=this.monthsArr;
+    this.lineChartLabels=this.monthsArr;        
+   
   }
 
   //operation methods

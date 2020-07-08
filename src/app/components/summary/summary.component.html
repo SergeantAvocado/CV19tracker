@@ -8,8 +8,8 @@
     <div class="input-group-prepend">
       <button class="btn btn-outline-danger btn-md" disabled >select country:</button>
     </div>
-    <select class="custom-select" id="country_selector" (change)="GetCountrySlug($event)">
-      <option Value="">---</option>
+    <select class="custom-select" id="country_selector" (change)="GetCountrySlug($event)" >
+      <option value="{{visitorsCountrySlug}}">current location</option>
       <option *ngFor="let country of listOfCountries" value="{{country.Slug}}">{{country.Country}}</option>
     </select>
   </div>
