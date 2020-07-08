@@ -146,6 +146,7 @@ export class SummaryComponent implements OnInit {
         try 
         {
           this.listOfCases= res as any[];
+          this.listOfCases.reverse();
           this.ConvertDateFormat(this.listOfCases);
           this.GetActualReportData(); 
         } catch (error)
@@ -179,10 +180,8 @@ export class SummaryComponent implements OnInit {
 
   GetActualReportData()
   {
-    let index=this.listOfCases.length-1;
-    let index_alt=this.listOfCases.length-2;
-    let actualCase:any = this.listOfCases[index];
-    let previousCase:any = this.listOfCases[index_alt];
+    let actualCase:any = this.listOfCases[0];
+    let previousCase:any = this.listOfCases[1];
 
     this.t_confirmed=actualCase.Confirmed;
     this.t_deaths = actualCase.Deaths;
@@ -239,7 +238,7 @@ export class SummaryComponent implements OnInit {
     switch (op)
     {
       case 1: //Every month
-        this.monthsArr = Array.from(this.monthsSet);
+        this.monthsArr = Array.from(this.monthsSet).reverse();
         this.lineChartLabels=this.monthsArr;
       break;
       
@@ -291,33 +290,29 @@ export class SummaryComponent implements OnInit {
 
   GetEveryMonthDatasets()
   {
-    for (let i = 0; i < this.listOfCases.length; i++)
+    for (let i = this.listOfCases.length-1; i < this.listOfCases.length; i--)
     {
-      if(this.listOfCases[i+1]!=null)
+      if(this.listOfCases[i-1] == null) break;
+      let date1 = new Date(this.listOfCases[i].Date);
+      let month1 = date1.getMonth();
+      
+      let date2 = new Date(this.listOfCases[i-1].Date);
+      let month2 = date2.getMonth();
+      if(month1<month2) //last day of month
       {
-        let date1 = new Date(this.listOfCases[i].Date);
-        let month1 = date1.getMonth();
-        
-        let date2 = new Date(this.listOfCases[i+1].Date);
-        let month2 = date2.getMonth();
-        if(month1<month2) //last day of month
-        {
-          //save datasets
-          this.confirmedDataset.push(this.listOfCases[i].Confirmed);
-          this.recoveredDataset.push(this.listOfCases[i].Recovered);
-          this.deathsDataset.push(this.listOfCases[i].Deaths);
-          this.activeDataset.push(this.listOfCases[i].Active);
-        }
+        //save datasets
+        this.confirmedDataset.push(this.listOfCases[i].Confirmed);
+        this.recoveredDataset.push(this.listOfCases[i].Recovered);
+        this.deathsDataset.push(this.listOfCases[i].Deaths);
+        this.activeDataset.push(this.listOfCases[i].Active);
       }
+     
     }
-
-    let last_index = this.listOfCases.length-1;
-
     //save data of the last reported case 
-    this.confirmedDataset.push(this.listOfCases[last_index].Confirmed);
-    this.recoveredDataset.push(this.listOfCases[last_index].Recovered);
-    this.deathsDataset.push(this.listOfCases[last_index].Deaths);
-    this.activeDataset.push(this.listOfCases[last_index].Active);
+    this.confirmedDataset.push(this.listOfCases[0].Confirmed);
+    this.recoveredDataset.push(this.listOfCases[0].Recovered);
+    this.deathsDataset.push(this.listOfCases[0].Deaths);
+    this.activeDataset.push(this.listOfCases[0].Active);
     
     this.UpdateChartLables(1);
   }
@@ -331,8 +326,9 @@ export class SummaryComponent implements OnInit {
   GetDatasetsForMonth(month:string)
   {
     let selected_month = this.GetMonthNumber(month);
-    for (let i = 0; i < this.listOfCases.length; i++)
+    for (let i = this.listOfCases.length-1; i < this.listOfCases.length; i--)
     {
+      if(this.listOfCases[i-1]==null) break;
       let date= new Date(this.listOfCases[i].Date);    
       let case_month = date.getMonth() +1;
       //check if case belongs to selected month
@@ -349,6 +345,21 @@ export class SummaryComponent implements OnInit {
         this.recoveredDataset.push(this.listOfCases[i].Recovered);
       }
       
+    }
+    //check if the user requested the current month
+    let date= new Date(this.listOfCases[0].Date);    
+    let case_month = date.getMonth() +1;
+    if(selected_month == case_month)
+    {
+      //get day
+      let day= date.getDate().toString();
+
+      //push to datasets
+      this.daysArr.push(day);
+      this.confirmedDataset.push(this.listOfCases[0].Confirmed);
+      this.deathsDataset.push(this.listOfCases[0].Deaths);
+      this.activeDataset.push(this.listOfCases[0].Active);
+      this.recoveredDataset.push(this.listOfCases[0].Recovered); 
     }
     this.UpdateChartLables(2);
   }
