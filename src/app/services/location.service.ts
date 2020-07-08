@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 export class LocationService 
 {
   response: any;
-  baseURL = "http://ip-api.com/json/"
+  baseURL = "https://ipapi.co/json/"
   public userCountryCode:string;
 
   constructor(private httpClient:HttpClient)
@@ -20,7 +20,7 @@ export class LocationService
     this.httpClient.get(this.baseURL).subscribe(res=>
       {
         this.response = res;
-        this.userCountryCode = this.response.countryCode; //getting user country
+        this.userCountryCode = this.response.country_code; //getting user country
       });
   }
 }
